@@ -258,7 +258,60 @@ class pc_pawn:
 	info = 'can only move in forward by one step or two in first move, can kill opponent by mmoving one step forward diagonally only'
 	def moves_pos(self, board, pos, color):
 		moves_ret = []
-		
+		if(color == 'W'):
+			if(pos['y']==7):
+				init_pos = True
+			else:
+				init_pos = False
+			if(board.board_matrix[pos['x']][pos['y']-1]['role']!='E'):
+				block_ahead = True
+			else:
+				block_ahead = False
+			if(pos['x']==0):
+				if(board.board_matrix[pos['x']+1][pos['y']-1]['role']=='B'):
+					moves_ret.append({'x':pos['x']+1, 'y':pos['y']-1})
+			if(pos['x']==7):
+				if(board.board_matrix[pos['x']-1][pos['y']-1]['role']=='B'):
+					moves_ret.append({'x':pos['x']-1, 'y':pos['y']-1})
+			else:
+				if(board.board_matrix[pos['x']+1][pos['y']-1]['role']=='B'):
+					moves_ret.append({'x':pos['x']+1, 'y':pos['y']-1})
+				if(board.board_matrix[pos['x']-1][pos['y']-1]['role']=='B'):
+					moves_ret.append({'x':pos['x']-1, 'y':pos['y']-1})
+			if(block_ahead == False):
+					moves_ret.append({'x':pos['x'], 'y':pos['y']-1})
+			if(init_pos == True):
+				if(board.board_matrix[pos['x']][pos['y']+2]):
+					moves_ret.append({'x':pos['x'], 'y':pos['y']+2})			
+
+
+		if(color == 'B'):
+			if(pos['y']==1):
+				init_pos = True
+			else:
+				init_pos = False
+			if(board.board_matrix[pos['x']][pos['y']+1]['role']!='E'):
+				block_ahead = True
+			else:
+				block_ahead = False
+			if(pos['x']==0):
+				if(board.board_matrix[pos['x']+1][pos['y']+1]['role']=='W'):
+					moves_ret.append({'x':pos['x']+1, 'y':pos['y']+1})
+			if(pos['x']==7):
+				if(board.board_matrix[pos['x']-1][pos['y']+1]['role']=='W'):
+					moves_ret.append({'x':pos['x']-1, 'y':pos['y']+1})
+			else:
+				if(board.board_matrix[pos['x']+1][pos['y']+1]['role']=='W'):
+					moves_ret.append({'x':pos['x']+1, 'y':pos['y']+1})
+				if(board.board_matrix[pos['x']-1][pos['y']+1]['role']=='W'):
+					moves_ret.append({'x':pos['x']-1, 'y':pos['y']+1})
+			if(block_ahead == False):
+					moves_ret.append({'x':pos['x'], 'y':pos['y']+1})
+			if(init_pos == True):
+				if(board.board_matrix[pos['x']][pos['y']-2]):
+					moves_ret.append({'x':pos['x'], 'y':pos['y']-2})
+
+
 		return moves_ret
 
 class pc_knight:
