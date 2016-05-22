@@ -281,7 +281,7 @@ class pc_pawn:
 			if(block_ahead == False):
 					moves_ret.append({'x':pos['x'], 'y':pos['y']-1})
 			if(init_pos == True):
-				if(board.board_matrix[pos['x']][pos['y']+2]):
+				if(board.board_matrix[pos['x']][pos['y']+2]['role']!='W'):
 					moves_ret.append({'x':pos['x'], 'y':pos['y']+2})			
 
 
@@ -308,7 +308,7 @@ class pc_pawn:
 			if(block_ahead == False):
 					moves_ret.append({'x':pos['x'], 'y':pos['y']+1})
 			if(init_pos == True):
-				if(board.board_matrix[pos['x']][pos['y']-2]):
+				if(board.board_matrix[pos['x']][pos['y']-2]['role']!='B'):
 					moves_ret.append({'x':pos['x'], 'y':pos['y']-2})
 
 
