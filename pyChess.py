@@ -320,6 +320,8 @@ class pc_knight:
 	info = 'gallops'
 	def moves_pos(self, board, pos, color):
 		moves_ret = []
+		for i in 1..4:
+			
 		
 		return moves_ret
 
